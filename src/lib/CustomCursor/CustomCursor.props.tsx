@@ -12,6 +12,7 @@ export type ContextProps = {
 export type UseCustomCursor = (setInnerCursorActive: ((value:boolean) => void) | null) => [
   ref: RefObject<HTMLDivElement>,
   focused: boolean,
+  unmounting: boolean,
   mousePosition: [number, number],
   angle: number,
   innerCursorActive: boolean,
@@ -23,4 +24,5 @@ export type CursorProps = {
   x: number,
   y: number,
   angle: number,
+  unmounting: boolean,
 }

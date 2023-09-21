@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 import { useCustomCursor } from './CustomCursor.service'
-import { CustomCursorProps, ContextProps } from './CustomCursor.props'
+import { CustomCursorProps } from './CustomCursor.props'
 import styles from './CustomCursor.module.scss'
 import { Cursor } from './Cursor'
 
@@ -17,14 +17,14 @@ export default function CustomCursor({
   const [
     ref,
     focused,
+    unmounting,
     [x, y],
     angle,
     innerCursorActive,
     setInnerCursorActive,
   ] = useCustomCursor(setOuterCursorActive)
 
-  return (
-    
+  return (    
       <div
         ref={ref}
         className={focused ?  styles.shell + ' ' + styles.active : styles.shell}
@@ -39,6 +39,7 @@ export default function CustomCursor({
             x={x}
             y={y}
             angle={rotating?angle:0}
+            unmounting={unmounting}
           />
         }
       </div>

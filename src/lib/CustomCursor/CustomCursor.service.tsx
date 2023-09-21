@@ -4,6 +4,7 @@ import { UseCustomCursor } from './CustomCursor.props'
 export const useCustomCursor:UseCustomCursor = (setOuterCursorActive) => {
   const ref = useRef<HTMLDivElement>(null)
   const [focused, setFocused] = useState(false)
+  const [unmounting, setUnmounting] = useState(false)
   const [mousePosition, setMousePosition] = useState<[number, number]>([0, 0])
   const [angle, setAngle] = useState(0)
   const [innerCursorActive, setInnerCursorActive] = useState(false)
@@ -25,6 +26,7 @@ export const useCustomCursor:UseCustomCursor = (setOuterCursorActive) => {
       setOuterCursorActive(true)
     }
     setFocused(true)
+    setUnmounting(false)
   }
   
   const deActivate = () => {
@@ -59,13 +61,22 @@ export const useCustomCursor:UseCustomCursor = (setOuterCursorActive) => {
     }
   }, [])  
 
+  useEffect(() => {
+    if (unmounting) setTimeout(() => setInnerCursorActive(true), 200)
+    else setTimeout(() => setInnerCursorActive(false), 200)
+    return () => {
+      setInnerCursorActive(false)
+    }
+  }, [unmounting])  
+
   return([
     ref,
     focused,
+    unmounting,
     mousePosition,
     angle,
     innerCursorActive,
-    (value: boolean) => setInnerCursorActive(value),
+    (value: boolean) => setUnmounting(value),
   ])
 }
 

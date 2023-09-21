@@ -1,3 +1,7 @@
+button {
+  padding: 1em;
+}
+
 .exampleOne {
   width: 200px;
   height: 200px;
@@ -9,6 +13,13 @@
   justify-content: center;
 }
 
-button {
-  padding: 1em;
+.exampleTwo {
+  width: 200px;
+  height: 200px;
+  background-color:lightsalmon;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

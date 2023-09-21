@@ -1,23 +1,18 @@
 import { useCustomCursor } from './CustomCursor.service'
-import { CustomCursorProps, CursorProps } from './CustomCursor.props'
+import { CustomCursorProps } from './CustomCursor.props'
 import styles from './CustomCursor.module.scss'
+import { Cursor } from './Cursor'
 
-const Cursor = ({cursor, x, y}: CursorProps) => {
-  return (
-    <div
-      className={styles.cursor}
-      style={{left:x, top:y}}
-    >
-      {cursor}
-    </div>
-  )
-}
-
-export default function CustomCursor({children, cursor = 'Кастомный курсор'} : CustomCursorProps) {
+export default function CustomCursor({
+  children,
+  cursor = 'Кастомный курсор',
+  rotating = false,
+} : CustomCursorProps) {
   const [
     ref,
     focused,
     [x, y],
+    angle,
   ] = useCustomCursor()
   
   return (
@@ -27,7 +22,14 @@ export default function CustomCursor({children, cursor = 'Кастомный к�
     >
       {children}
 
-      {focused && <Cursor cursor={cursor} x={x} y={y} />}
+      {focused && 
+        <Cursor
+          cursor={cursor}
+          x={x}
+          y={y}
+          angle={rotating?angle:0}
+        />
+      }
     </div>
   )
 }

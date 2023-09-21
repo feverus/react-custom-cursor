@@ -12,5 +12,8 @@
     height: 1px;
     overflow: visible;
     pointer-events: none;
+    >*:first-child {
+      transform: translate3d(-50%, -50%, 0);
+    }
   }
 }

@@ -10,14 +10,12 @@ npm i react-custom-cursor
 ```
 import { CustomCursor } from './lib/'
 
-const muCursor = <div
-style={{borderRadius:'50%', width:'10px', height:'10px', color: 'red',}}></div>
+const muCursor = 'любой JSX элемент или строка'
 
 <CustomCursor cursor={muCursor}>
    <>ваш компонент</>
 </CustomCursor>
 ```
-
 
 ## Параметры:
 
@@ -32,3 +30,17 @@ import { RotatingArrow } from './lib/'
 
 ### Лазерная указка
 import { LaserDot } from './lib/'
+
+## Для замены курсора на всей странице
+Оберните самый верхний компонент
+```
+<CustomCursor cursor={'🦝'}>
+   <App />
+</CustomCursor>
+```
+И добавьте стиль для него
+```
+#root>div {
+  width: 100%;
+}
+```

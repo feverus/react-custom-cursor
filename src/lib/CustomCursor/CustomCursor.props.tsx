@@ -1,15 +1,21 @@
 import React, { RefObject, PropsWithChildren } from "react"
 
-export interface CustomCursorProps extends PropsWithChildren {
+export interface CustomCursorProps extends PropsWithChildren {  
   cursor?: React.JSX.Element | string,
   rotating?: boolean,
 }
 
-export type UseCustomCursor = () => [
+export type ContextProps = {
+  setInnerCursorActive:((value:boolean) => void) | null
+}
+
+export type UseCustomCursor = (setInnerCursorActive: ((value:boolean) => void) | null) => [
   ref: RefObject<HTMLDivElement>,
   focused: boolean,
   mousePosition: [number, number],
   angle: number,
+  innerCursorActive: boolean,
+  setInnerCursorActive: (value:boolean) => void,
 ]
 
 export type CursorProps = {

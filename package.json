@@ -1,11 +1,16 @@
 {
   "name": "@feverus/react-custom-cursor",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "type": "module",
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "react custom cursor",
+    "react cursor",
+    "animated cursor"
   ],
   "main": "./dist/react-ts-lib.umd.js",
   "module": "./dist/react-ts-lib.es.js",

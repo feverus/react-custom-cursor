@@ -12,5 +12,11 @@
   display: flex;
   gap: 0.6rem;
   height: 100vh;
+  width: 100%;
   justify-content: center;
+
+}
+
+#root>div {
+  width: 100%;
 }

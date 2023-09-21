@@ -1,28 +1,36 @@
 import { useRef, useState, useEffect } from 'react'
 import { UseCustomCursor } from './CustomCursor.props'
 
-export const useCustomCursor:UseCustomCursor = () => {
+export const useCustomCursor:UseCustomCursor = (setOuterCursorActive) => {
   const ref = useRef<HTMLDivElement>(null)
   const [focused, setFocused] = useState(false)
   const [mousePosition, setMousePosition] = useState<[number, number]>([0, 0])
   const [angle, setAngle] = useState(0)
+  const [innerCursorActive, setInnerCursorActive] = useState(false)
 
   const offsetCoordinates = useRef<[number, number]>([0, 0])
   const sourceSize = useRef<[number, number]>([0, 0])
   const sourceCenterCoordinates = useRef<[number, number]>([0, 0])
-  const element = ref.current
 
-  const activate = () => {
-    const divRect = element?.getBoundingClientRect()
+
+  const activate = () => { 
+    const divRect = ref.current?.getBoundingClientRect()
     if (divRect) {
       offsetCoordinates.current = [divRect?.x, divRect?.y]
       sourceSize.current = [divRect?.width, divRect?.height]
       sourceCenterCoordinates.current = [divRect?.x + (divRect?.width / 2), divRect?.y + (divRect?.height / 2)]
     }
+    
+    if (setOuterCursorActive) {
+      setOuterCursorActive(true)
+    }
     setFocused(true)
   }
   
   const deActivate = () => {
+    if (setOuterCursorActive) {
+      setOuterCursorActive(false)
+    }
     setFocused(false)
   }
 
@@ -34,11 +42,12 @@ export const useCustomCursor:UseCustomCursor = () => {
     setMousePosition([e.clientX - x, e.clientY - y])
   }
  
-  useEffect(() => {   
+  useEffect(() => {
+    const element = ref.current
     if (element) {
       element.addEventListener('mouseenter', activate)
       element.addEventListener('mouseleave', deActivate)
-      element.addEventListener('mousemove', mouseMove)
+      element.addEventListener('mousemove', mouseMove)   
     }
   
     return () => {
@@ -48,12 +57,15 @@ export const useCustomCursor:UseCustomCursor = () => {
         element.removeEventListener('mousemove', mouseMove)
       }
     }
-  }, [])
+  }, [])  
 
   return([
     ref,
     focused,
     mousePosition,
     angle,
+    innerCursorActive,
+    (value: boolean) => setInnerCursorActive(value),
   ])
 }
+

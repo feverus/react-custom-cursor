@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { CustomCursor, RotatingArrow, LaserDot } from './lib/'
+import { CustomCursor, RotatingArrow, LaserDot, CircleWithText } from './lib/'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -40,6 +40,16 @@ function App() {
           </CustomCursor>     
         </div>
       </CustomCursor>   
+
+      <CustomCursor cursor={<CircleWithText text={'Custom cursor example'} color={'#9000bf'} />} >
+        <div className='exampleOne'>
+          Пример с текстом в окружности
+          
+          <button onClick={() => setCount(count + 1)}>
+            Нажата {count} раз
+          </button>
+        </div>
+      </CustomCursor>  
     </div>
   )
 }

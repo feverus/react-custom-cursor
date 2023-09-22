@@ -1,4 +1,5 @@
 export type CircleWithTextProps = {
   text?: string,
-  color?: string
+  color?: string,
+  donutColor?: string,
 }

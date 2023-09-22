@@ -15,9 +15,13 @@ export const useCustomCursor:UseCustomCursor = (
   const offsetCoordinates = useRef<[number, number]>([0, 0])
   const sourceSize = useRef<[number, number]>([0, 0])
   const sourceCenterCoordinates = useRef<[number, number]>([0, 0])
+  const rotateInterval = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
+  const randomRotateCursor = () => {
+    setAngle(angle + (Math.random() - 0.5) * 6)
+  }
 
-  const activate = () => { 
+  const activate = () => {     
     const divRect = ref.current?.getBoundingClientRect()
     if (divRect) {
       offsetCoordinates.current = [divRect?.x, divRect?.y]
@@ -33,6 +37,7 @@ export const useCustomCursor:UseCustomCursor = (
   }
   
   const deActivate = () => {
+    clearTimeout(rotateInterval.current)
     if (setOuterCursorActive) {
       setOuterCursorActive(false)
     }
@@ -43,26 +48,32 @@ export const useCustomCursor:UseCustomCursor = (
     const [x, y] = offsetCoordinates.current
     const [x0, y0] = sourceCenterCoordinates.current
     
-    rotating && setAngle(Math.atan2(e.clientY - y0, e.clientX - x0))
+    if (rotating===true) setAngle(Math.atan2(e.clientY - y0, e.clientX - x0))
+    if (rotating==='onMove') setAngle(angle + 0.01)
+
     setMousePosition([e.clientX - x, e.clientY - y])
   }
  
   useEffect(() => {
+    clearTimeout(rotateInterval.current)
+    if (focused && (rotating==='auto')) rotateInterval.current = setTimeout(randomRotateCursor, 1000)
+
     const element = ref.current
-    if (element) {
+    if (element) {      
       element.addEventListener('mouseenter', activate)
       element.addEventListener('mouseleave', deActivate)
       element.addEventListener('mousemove', mouseMove)   
     }
   
     return () => {
+      clearTimeout(rotateInterval.current)
       if (element) {
         element.removeEventListener('mouseenter', activate)
         element.removeEventListener('mouseleave', deActivate)
         element.removeEventListener('mousemove', mouseMove)
       }
     }
-  }, [])  
+  }, [angle, focused])  
 
   useEffect(() => {
     if (unmounting) setTimeout(() => setInnerCursorActive(true), 200)

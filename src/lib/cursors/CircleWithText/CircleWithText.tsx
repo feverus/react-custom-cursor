@@ -1,7 +1,11 @@
 import styles from './CircleWithText.module.scss'
 import { CircleWithTextProps } from './CircleWithText.props'
 
-const CircleWithText = ({text = '...', color = 'black'}: CircleWithTextProps) => {
+const CircleWithText = ({
+  text = '...',
+  color = 'black',
+  donutColor = '#eeeeee90',
+}: CircleWithTextProps) => {
 
   return (
     <svg
@@ -15,6 +19,9 @@ const CircleWithText = ({text = '...', color = 'black'}: CircleWithTextProps) =>
         0-135.5-60.7-135.5-135.5s60.7-135.5,135.5-135.5s135.5, 60.7, 135.5,
         135.5 S318, 382.4, 243.2, 382.4z" id="textcircle" />
       </defs> 
+      <circle cx="250" cy="250" r="155" fill="transparent" 
+        strokeWidth="100" stroke={donutColor}
+      id="background" />
       <text dy="0" className={styles.text} fill={color}>
         <textPath xlinkHref="#textcircle">
           {text}

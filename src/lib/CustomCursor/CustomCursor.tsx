@@ -42,6 +42,7 @@ export default function CustomCursor({
             angle={rotating?angle:0}
             scale={scale}
             unmounting={unmounting}
+            rotating={rotating}
           />
         }
       </div>

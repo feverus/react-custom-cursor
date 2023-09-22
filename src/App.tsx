@@ -7,6 +7,7 @@ function App() {
 
   return (
     <div className='fullwidth'>
+
       <CustomCursor cursor={LaserDot}>
         <div className='exampleOne'>
           Базовый пример
@@ -50,6 +51,27 @@ function App() {
           </button>
         </div>
       </CustomCursor>  
+
+      <CustomCursor cursor={<CircleWithText text={'Spin Me Round (Like a Record)'} color={'#109010'} />} rotating='onMove'>
+        <div className='exampleTwo'>
+          Вращающийся при движении мыши
+          
+          <button onClick={() => setCount(count + 1)}>
+            Нажата {count} раз
+          </button>
+        </div>
+      </CustomCursor>  
+
+      <CustomCursor cursor={<CircleWithText text={'I spin when i want'} color={'#303090'} />} rotating='auto'>
+        <div className='exampleOne'>
+          Вращающийся автоматически
+          
+          <button onClick={() => setCount(count + 1)}>
+            Нажата {count} раз
+          </button>
+        </div>
+      </CustomCursor>  
+
     </div>
   )
 }

@@ -1,8 +1,10 @@
 import React, { RefObject, PropsWithChildren } from "react"
 
+export type RotatingType = boolean | 'auto' | 'onMove'
+
 export interface CustomCursorProps extends PropsWithChildren {  
   cursor?: React.JSX.Element | string,
-  rotating?: boolean,
+  rotating?: RotatingType,
   scale?: number,
 }
 
@@ -12,7 +14,7 @@ export type ContextProps = {
 
 export type UseCustomCursor = (
     setInnerCursorActive: ((value:boolean) => void) | null,
-    rotating: boolean
+    rotating: RotatingType
   ) => [
   ref: RefObject<HTMLDivElement>,
   focused: boolean,
@@ -30,4 +32,5 @@ export type CursorProps = {
   angle: number,
   scale: number,
   unmounting: boolean,
+  rotating: RotatingType,
 }

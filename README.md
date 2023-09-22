@@ -2,7 +2,7 @@
 
 ## Установка
 ```
-npm i react-custom-cursor
+npm i @feverus/react-custom-cursor
 ```
 
 ## Использование:

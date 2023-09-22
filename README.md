@@ -54,6 +54,7 @@ import { CircleWithText } from './lib/'
 И добавьте стиль для него
 ```
 #root>div {
-  width: 100%;
+   width: 100vw;
+   height: 100vh;
 }
 ```

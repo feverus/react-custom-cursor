@@ -19,7 +19,7 @@ function App() {
 
       <CustomCursor cursor={RotatingArrow} rotating={true}>
         <div className='exampleTwo'>
-          Пример с вращающейся стрелкой
+          Пример с вращающейся вокруг центра стрелкой
           
           <button onClick={() => setCount(count + 1)}>
             Нажата {count} раз

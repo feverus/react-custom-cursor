@@ -17,7 +17,7 @@ const CircleWithText = ({
       <defs>
         <path d="M250 440C145.114 440 60 354.886 60 250C60 145.114 145.114 60 250 60C354.886 60 440 145.114 440 250C440 354.886 345.351 440 240.465 440H250Z" id="textcircle" />
       </defs> 
-      <circle cx="250" cy="250" r="200" fill="transparent" 
+      <circle cx="249.5" cy="249.5" r="200" fill="transparent" 
         strokeWidth="80" stroke={donutColor}
       id="background" />
       <text dy="0" className={styles.text} fill={color}>

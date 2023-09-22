@@ -1,7 +1,10 @@
 import { useRef, useState, useEffect } from 'react'
 import { UseCustomCursor } from './CustomCursor.props'
 
-export const useCustomCursor:UseCustomCursor = (setOuterCursorActive) => {
+export const useCustomCursor:UseCustomCursor = (
+    setOuterCursorActive,
+    rotating,
+  ) => {
   const ref = useRef<HTMLDivElement>(null)
   const [focused, setFocused] = useState(false)
   const [unmounting, setUnmounting] = useState(false)
@@ -33,14 +36,14 @@ export const useCustomCursor:UseCustomCursor = (setOuterCursorActive) => {
     if (setOuterCursorActive) {
       setOuterCursorActive(false)
     }
-    setFocused(false)
+    setFocused(false)    
   }
 
   const mouseMove = (e:MouseEvent) => {
     const [x, y] = offsetCoordinates.current
     const [x0, y0] = sourceCenterCoordinates.current
     
-    setAngle(Math.atan2(e.clientY - y0, e.clientX - x0))
+    rotating && setAngle(Math.atan2(e.clientY - y0, e.clientX - x0))
     setMousePosition([e.clientX - x, e.clientY - y])
   }
  

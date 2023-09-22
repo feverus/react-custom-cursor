@@ -28,9 +28,10 @@ function App() {
 
       <CustomCursor cursor={LaserDot}>
         <div className='exampleShell'>
-          <CustomCursor cursor={RotatingArrow} rotating={true}>
+          Пример вложенный
+          <CustomCursor cursor={LaserDot} scale={3}>
             <div className='exampleTwo'>
-              Пример вложенный
+              Пример с измененным размером курсора
               
               <button onClick={() => setCount(count + 1)}>
                 Нажата {count} раз

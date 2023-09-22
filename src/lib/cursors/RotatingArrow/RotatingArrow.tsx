@@ -1,4 +1,4 @@
-import img from './arrow_base.png'
+import img from './arrow.svg'
 
 const RotatingArrow =
   <div

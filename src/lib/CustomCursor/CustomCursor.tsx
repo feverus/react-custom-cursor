@@ -10,6 +10,7 @@ export default function CustomCursor({
     children,
     cursor = 'Кастомный курсор',
     rotating = false,
+    scale = 1,
   } : CustomCursorProps) {
 
   const setOuterCursorActive = useContext(InnerContext)
@@ -22,7 +23,7 @@ export default function CustomCursor({
     angle,
     innerCursorActive,
     setInnerCursorActive,
-  ] = useCustomCursor(setOuterCursorActive)
+  ] = useCustomCursor(setOuterCursorActive, rotating)
 
   return (    
       <div
@@ -39,6 +40,7 @@ export default function CustomCursor({
             x={x}
             y={y}
             angle={rotating?angle:0}
+            scale={scale}
             unmounting={unmounting}
           />
         }

@@ -15,12 +15,10 @@ const CircleWithText = ({
       width="100" height="100"
     >
       <defs>
-        <path d="M243.2, 382.4c-74.8,   
-        0-135.5-60.7-135.5-135.5s60.7-135.5,135.5-135.5s135.5, 60.7, 135.5,
-        135.5 S318, 382.4, 243.2, 382.4z" id="textcircle" />
+        <path d="M250 440C145.114 440 60 354.886 60 250C60 145.114 145.114 60 250 60C354.886 60 440 145.114 440 250C440 354.886 345.351 440 240.465 440H250Z" id="textcircle" />
       </defs> 
-      <circle cx="250" cy="250" r="155" fill="transparent" 
-        strokeWidth="100" stroke={donutColor}
+      <circle cx="250" cy="250" r="200" fill="transparent" 
+        strokeWidth="80" stroke={donutColor}
       id="background" />
       <text dy="0" className={styles.text} fill={color}>
         <textPath xlinkHref="#textcircle">

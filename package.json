@@ -1,24 +1,37 @@
 {
   "name": "@feverus/react-custom-cursor",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "files": [
     "dist"
   ],
+  "author": "Evgeny Patsinko / evgeny.fun@mail.ru",
   "keywords": [
     "react custom cursor",
     "react cursor",
-    "animated cursor"
+    "animated cursor",
+    "multiple cursor on page",
+    "react cursor animation",
+    "react cursor component",
+    "react cursor library",
+    "react cursor package",
+    "react cursor ui component",
+    "react cursor ui library",
+    "react cursor ui package"
   ],
-  "main": "./dist/react-ts-lib.umd.js",
-  "module": "./dist/react-ts-lib.es.js",
+  "main": "./dist/react-custom-cursor.umd.js",
+  "module": "./dist/react-custom-cursor.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-ts-lib.es.js",
-      "require": "./dist/react-ts-lib.umd.js"
+      "import": "./dist/react-custom-cursor.es.js",
+      "require": "./dist/react-custom-cursor.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "scripts": {

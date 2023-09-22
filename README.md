@@ -8,7 +8,8 @@ npm i @feverus/react-custom-cursor
 ## Использование:
 
 ```
-import { CustomCursor } from './lib/'
+import { CustomCursor } from '@feverus/react-custom-cursor'
+import '@feverus/react-custom-cursor/dist/style.css'
 
 const muCursor = 'любой JSX элемент или строка'
 
@@ -31,13 +32,20 @@ const muCursor = 'любой JSX элемент или строка'
 ## Предустановленные курсоры
 
 ### Стрелка
-import { RotatingArrow } from './lib/'
+import { RotatingArrow } from '@feverus/react-custom-cursor'
 
 ### Лазерная указка
-import { LaserDot } from './lib/'
+import { LaserDot } from '@feverus/react-custom-cursor'
 
-### Текст вписанный в окружность
-import { CircleWithText } from './lib/'
+### Текст по окружности
+```
+import { CircleWithText } from '@feverus/react-custom-cursor'
+
+<CustomCursor cursor={<CircleWithText text={'any text'} color={'any color'} />}>
+   ...
+</CustomCursor>
+```
+
 | Название | Тип | По умолчанию | Описание |
 | :---: | :---: | :---: | :---: |
 | text | string | '...' | Текст надписи (до 30 символоов)

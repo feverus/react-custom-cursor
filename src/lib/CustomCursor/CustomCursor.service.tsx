@@ -8,6 +8,7 @@ export const useCustomCursor:UseCustomCursor = (
   const ref = useRef<HTMLDivElement>(null)
   const [focused, setFocused] = useState(false)
   const [unmounting, setUnmounting] = useState(false)
+  const [hovered, setHovered] = useState(false)
   const [mousePosition, setMousePosition] = useState<[number, number]>([0, 0])
   const [angle, setAngle] = useState(0)
   const [innerCursorActive, setInnerCursorActive] = useState(false)
@@ -22,6 +23,7 @@ export const useCustomCursor:UseCustomCursor = (
   }
 
   const activate = () => {     
+    console.log('activate')
     const divRect = ref.current?.getBoundingClientRect()
     if (divRect) {
       offsetCoordinates.current = [divRect?.x, divRect?.y]
@@ -53,6 +55,24 @@ export const useCustomCursor:UseCustomCursor = (
 
     setMousePosition([e.clientX - x, e.clientY - y])
   }
+
+  const mouseOver = (e:MouseEvent) => {
+    if (e.target===null || hovered===true) return
+    const tag = (e.target as Element).tagName.toLowerCase()
+    if (tag==='a' || tag==='button') {
+      e.stopPropagation()
+      setHovered(true)
+    }
+  }
+
+  const mouseOut = (e:MouseEvent) => {
+    if (e.target===null || hovered===false) return
+    const tag = (e.target as Element).tagName.toLowerCase()
+    if (tag==='a' || tag==='button') {
+      e.stopPropagation()
+      setHovered(false)
+    }
+  }
  
   useEffect(() => {
     clearTimeout(rotateInterval.current)
@@ -62,7 +82,9 @@ export const useCustomCursor:UseCustomCursor = (
     if (element) {      
       element.addEventListener('mouseenter', activate)
       element.addEventListener('mouseleave', deActivate)
-      element.addEventListener('mousemove', mouseMove)   
+      element.addEventListener('mousemove', mouseMove)
+      element.addEventListener('mouseover', mouseOver)
+      element.addEventListener('mouseout', mouseOut)
     }
   
     return () => {
@@ -70,10 +92,12 @@ export const useCustomCursor:UseCustomCursor = (
       if (element) {
         element.removeEventListener('mouseenter', activate)
         element.removeEventListener('mouseleave', deActivate)
-        element.removeEventListener('mousemove', mouseMove)
+        element.removeEventListener('mousemove', mouseMove)        
+        element.addEventListener('mouseover', mouseOver)
+        element.addEventListener('mouseout', mouseOut)
       }
     }
-  }, [angle, focused])  
+  }, [angle, focused, hovered])  
 
   useEffect(() => {
     if (unmounting) setTimeout(() => setInnerCursorActive(true), 200)
@@ -87,6 +111,7 @@ export const useCustomCursor:UseCustomCursor = (
     ref,
     focused,
     unmounting,
+    hovered,
     mousePosition,
     angle,
     innerCursorActive,

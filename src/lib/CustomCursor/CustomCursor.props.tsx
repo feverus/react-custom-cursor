@@ -6,6 +6,7 @@ export interface CustomCursorProps extends PropsWithChildren {
   cursor?: React.JSX.Element | string,
   rotating?: RotatingType,
   scale?: number,
+  hoverClassName?: string,
 }
 
 export type ContextProps = {
@@ -19,6 +20,7 @@ export type UseCustomCursor = (
   ref: RefObject<HTMLDivElement>,
   focused: boolean,
   unmounting: boolean,
+  hovered: boolean,
   mousePosition: [number, number],
   angle: number,
   innerCursorActive: boolean,
@@ -33,4 +35,5 @@ export type CursorProps = {
   scale: number,
   unmounting: boolean,
   rotating: RotatingType,
+  hoverClassName: string,
 }

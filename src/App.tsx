@@ -42,6 +42,21 @@ function App() {
         </div>
       </CustomCursor>   
 
+      <CustomCursor cursor={LaserDot}>
+        <div className='exampleShell'>
+          Пример вложенный с настраиваемо меняющимся курсором
+          <CustomCursor cursor={<CircleWithText text={'I change my style when hover'} color={'#303090'} />} rotating='auto' hoverClassName='hoverOne'>
+            <div className='exampleTwo'>
+              Пример с <a href="">ссылкой</a>
+              
+              <button onClick={() => setCount(count + 1)}>
+                Нажата {count} раз
+              </button>
+            </div>
+          </CustomCursor>     
+        </div>
+      </CustomCursor>   
+
       <CustomCursor cursor={<CircleWithText text={'Custom cursor example'} color={'#9000bf'} />} >
         <div className='exampleOne'>
           Пример с текстом в окружности
@@ -73,6 +88,8 @@ function App() {
       </CustomCursor>  
 
     </div>
+
+    
   )
 }
 

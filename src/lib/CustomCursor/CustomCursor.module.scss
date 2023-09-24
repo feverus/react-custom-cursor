@@ -33,9 +33,12 @@
         height: 100px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: center;        
         //border: 1px red solid;
         //border-radius: 50%;
+        >div {
+          transition: all 200ms;
+        }
       }     
     }
   }
@@ -53,6 +56,10 @@
   -webkit-transition: -webkit-transform .8s ease-in-out;
   -ms-transition: -ms-transform .8s ease-in-out;
   transition: transform .8s ease-in-out; 
+}
+
+.hover {
+  transform: scale(0.5);
 }
 
 @keyframes show {

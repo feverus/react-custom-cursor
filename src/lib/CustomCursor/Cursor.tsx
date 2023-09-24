@@ -1,7 +1,7 @@
 import { CursorProps } from './CustomCursor.props';
 import styles from './CustomCursor.module.scss';
 
-export const Cursor = ({ cursor, x, y, angle, scale, unmounting, rotating }: CursorProps) => {
+export const Cursor = ({ cursor, x, y, angle, scale, unmounting, rotating, hoverClassName }: CursorProps) => {
   let style = styles.cursorWrapper
   if (unmounting) style = style + ' ' + styles.unmounting
   if (rotating === 'auto') style = style + ' ' + styles.smooth
@@ -12,11 +12,15 @@ export const Cursor = ({ cursor, x, y, angle, scale, unmounting, rotating }: Cur
       style={{ 
         left: x,
         top: y,
-        transform: `rotate(${angle}rad) scale(${scale})`,
+        transform: `rotate(${angle}rad) scale(${scale})`,        
       }}
     >
       <div className={styles.cursor}>
-        <div className={styles.forCenter}>{cursor}</div>
+        <div className={styles.forCenter}>
+          <div className={hoverClassName}>
+            {cursor}
+          </div>
+        </div>
       </div>
     </div>
   )

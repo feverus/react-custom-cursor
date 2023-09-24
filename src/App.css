@@ -5,8 +5,13 @@ button {
   margin: 1em;
   transition: all 300ms;
 }
-button:hover{
+
+button:hover {
   background-color: #fff5;
+}
+
+a {
+  text-decoration: none;
 }
 
 .fullwidth {
@@ -52,9 +57,14 @@ button:hover{
   background-color:lightseagreen;
   text-align: center;
   display: flex;
+  gap: 20px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-
+.hoverOne {
+  transform: scale(1.1);
+  filter: hue-rotate(180deg);
+  opacity: 0.6;
+}

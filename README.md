@@ -11,7 +11,7 @@ npm i @feverus/react-custom-cursor
 import { CustomCursor } from '@feverus/react-custom-cursor'
 import '@feverus/react-custom-cursor/dist/style.css'
 
-const muCursor = 'любой JSX элемент или строка'
+const muCursor = 'любой JSX элемент, строка или предустановленный курсор из списка ниже'
 
 <CustomCursor cursor={muCursor}>
    <>ваш компонент</>
@@ -22,12 +22,12 @@ const muCursor = 'любой JSX элемент или строка'
 
 | Название | Тип | По умолчанию | Описание |
 | :---: | :---: | :---: | :---: |
+| hoverClassName | string | style.css > .hover | Стиль курсора при наведении на \<a\> или \<button\>
+| scale | number | 1 | Изменяет масштаб курсора
 | rotating | boolean \| 'auto' \| 'onMove' | false | Без вращения
 |||| *true* - Поворачивает курсор вокруг центра области.  Обратите внимание, что угол в **0 радиан** это направление от правого края к центру. Это важно для создания нового курсора. 
 |||| *onMove* - поворачивает курсор при движении мыши. 
 |||| *auto* - поворачивает курсор случайным образом раз в секунду.
-|
-| scale | number | 1 | Изменяет масштаб курсора
 
 ## Предустановленные курсоры
 

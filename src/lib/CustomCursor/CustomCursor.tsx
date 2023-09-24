@@ -11,6 +11,7 @@ export default function CustomCursor({
     cursor = 'Кастомный курсор',
     rotating = false,
     scale = 1,
+    hoverClassName = styles.hover,
   } : CustomCursorProps) {
 
   const setOuterCursorActive = useContext(InnerContext)
@@ -19,6 +20,7 @@ export default function CustomCursor({
     ref,
     focused,
     unmounting,
+    hovered,
     [x, y],
     angle,
     innerCursorActive,
@@ -39,10 +41,11 @@ export default function CustomCursor({
             cursor={cursor}
             x={x}
             y={y}
-            angle={rotating?angle:0}
+            angle={rotating ? angle : 0}
             scale={scale}
             unmounting={unmounting}
             rotating={rotating}
+            hoverClassName={hovered ? hoverClassName : ''}
           />
         }
       </div>

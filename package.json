@@ -1,7 +1,7 @@
 {
   "name": "@feverus/react-custom-cursor",
   "private": false,
-  "version": "0.1.3",
+  "version": "0.1.5",
   "license": "MIT",
   "type": "module",
   "files": [
@@ -26,6 +26,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/react-custom-cursor.es.js",
       "require": "./dist/react-custom-cursor.umd.js"
     },

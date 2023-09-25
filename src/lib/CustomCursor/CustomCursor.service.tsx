@@ -47,13 +47,12 @@ export const useCustomCursor:UseCustomCursor = (
   }
 
   const mouseMove = (e:MouseEvent) => {
-    const [x, y] = offsetCoordinates.current
     const [x0, y0] = sourceCenterCoordinates.current
     
     if (rotating===true) setAngle(Math.atan2(e.clientY - y0, e.clientX - x0))
     if (rotating==='onMove') setAngle(angle + 0.01)
 
-    setMousePosition([e.clientX - x, e.clientY - y])
+    setMousePosition([e.clientX, e.clientY])
   }
 
   const mouseOver = (e:MouseEvent) => {
@@ -93,8 +92,8 @@ export const useCustomCursor:UseCustomCursor = (
         element.removeEventListener('mouseenter', activate)
         element.removeEventListener('mouseleave', deActivate)
         element.removeEventListener('mousemove', mouseMove)        
-        element.addEventListener('mouseover', mouseOver)
-        element.addEventListener('mouseout', mouseOut)
+        element.removeEventListener('mouseover', mouseOver)
+        element.removeEventListener('mouseout', mouseOut)
       }
     }
   }, [angle, focused, hovered])  

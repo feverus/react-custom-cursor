@@ -10,8 +10,8 @@
     @media (hover: none) {
       display: none;
     }
-    transform-origin: center center;
-    position: absolute;
+    z-index: 1000;
+    position: fixed;
     height: 1px;
     width: 1px;
     overflow: visible;
@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    transform-origin: center center;
     //border: 1px green solid;
     .cursor {
       animation: show 200ms;
@@ -34,7 +35,7 @@
         display: flex;
         align-items: center;
         justify-content: center;        
-        //border: 1px red solid;
+        border: 1px red solid;
         //border-radius: 50%;
         >div {
           transition: all 200ms;

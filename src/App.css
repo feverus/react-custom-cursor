@@ -14,25 +14,36 @@ a {
   text-decoration: none;
 }
 
+textarea {
+  width: 400px;
+}
+
 .fullwidth {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding: 20px 0;
+}
+.fullwidth>div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 700px;
+  justify-content: space-between;
 }
 
 .exampleOne, .exampleTwo, .exampleShell {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 
 .exampleOne {
   width: 200px;
   height: 200px;
-  background-color: tomato;
+  background: linear-gradient(135deg, #9e9e9e, #277e27);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -43,7 +54,7 @@ a {
 .exampleTwo {
   width: 200px;
   height: 200px;
-  background-color:lightsalmon;
+  background: linear-gradient(135deg, #9e9e9e, #27277e);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -64,7 +75,7 @@ a {
 }
 
 .hoverOne {
-  transform: scale(1.1);
+  transform: scale(0.6);
   filter: hue-rotate(180deg);
   opacity: 0.6;
 }

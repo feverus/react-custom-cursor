@@ -59,10 +59,10 @@ import { CircleWithText } from '@feverus/react-custom-cursor'
    <App />
 </CustomCursor>
 ```
-И добавьте стиль для него
+Возможно, понадобится добавить стиль для него
 ```
 #root>div {
    width: 100vw;
-   height: 100vh;
+   min-height: 100vh;
 }
 ```

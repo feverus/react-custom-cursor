@@ -5,48 +5,49 @@
     cursor: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
-  position: relative;
-  .cursorWrapper {
-    @media (hover: none) {
-      display: none;
-    }
-    z-index: 1000;
-    position: fixed;
-    height: 1px;
-    width: 1px;
-    overflow: visible;
-    pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    transform-origin: center center;
-    //border: 1px green solid;
-    .cursor {
-      animation: show 200ms;
-      height: 1px;
-      width: 1px;
-      overflow: visible;
-      //border: 1px blue solid;
-      .forCenter {
-        transform: translate3d(-50%, -50%, 0);
-        width: 100px;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;        
-        //border: 1px red solid;
-        //border-radius: 50%;
-        >div {
-          transition: all 200ms;
-        }
-      }     
-    }
-  }
 }
 
 .shell {
   width: min-content;
+  position: relative;
+}
+
+.cursorWrapper {
+  @media (hover: none) {
+    display: none;
+  }
+  z-index: 1000;
+  position: fixed;
+  height: 1px;
+  width: 1px;
+  overflow: visible;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  transform-origin: center center;
+  //border: 1px green solid;
+  .cursor {
+    animation: show 200ms;
+    height: 1px;
+    width: 1px;
+    overflow: visible;
+    //border: 1px blue solid;
+    .forCenter {
+      transform: translate3d(-50%, -50%, 0);
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;        
+      //border: 1px red solid;
+      //border-radius: 50%;
+      >div {
+        transition: all 200ms;
+      }
+    }     
+  }
 }
 
 .unmounting {

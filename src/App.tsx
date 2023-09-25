@@ -15,6 +15,29 @@ function App() {
     <div className='fullwidth'>
 
       <div>
+        <div className='exampleWithTransform'>
+          <CustomCursor cursor={LaserDot}>
+            <div className='exampleOne'>
+              Для блока с Transform
+              <button onClick={() => setCount(count + 1)}>
+                Нажата {count} {raz(count)}
+              </button>
+            </div>
+          </CustomCursor>
+        </div>
+        <textarea disabled>{`
+<CustomCursor cursor={LaserDot}>
+  <div className='exampleWithTransform'>
+  Для блока с Transform
+    <button onClick={() => setCount(count + 1)}>
+      Нажата {count} раз
+    </button>
+  </div>
+</CustomCursor>
+        `}</textarea>
+      </div>
+
+      <div>
         <CustomCursor cursor={LaserDot}>
           <div className='exampleOne'>
             Базовый пример

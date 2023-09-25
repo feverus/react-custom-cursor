@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react'
+import { createPortal } from 'react-dom'
 import { useCustomCursor } from './CustomCursor.service'
 import { CustomCursorProps } from './CustomCursor.props'
 import styles from './CustomCursor.module.scss'
@@ -30,23 +31,26 @@ export default function CustomCursor({
   return (    
       <div
         ref={ref}
-        className={focused ?  styles.shell + ' ' + styles.active : styles.shell}
+        className={focused ? styles.active : ''}
       >
         <InnerContext.Provider value={setInnerCursorActive}>
           {children}
         </InnerContext.Provider>
 
-        {focused && !innerCursorActive && 
-          <Cursor
-            cursor={cursor}
-            x={x}
-            y={y}
-            angle={rotating ? angle : 0}
-            scale={scale}
-            unmounting={unmounting}
-            rotating={rotating}
-            hoverClassName={hovered ? hoverClassName : ''}
-          />
+        {focused && !innerCursorActive && createPortal(
+          <div className={styles.shell} >
+            <Cursor
+              cursor={cursor}
+              x={x}
+              y={y}
+              angle={rotating ? angle : 0}
+              scale={scale}
+              unmounting={unmounting}
+              rotating={rotating}
+              hoverClassName={hovered ? hoverClassName : ''}
+            />
+          </div>,
+          document.body)
         }
       </div>
   )

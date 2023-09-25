@@ -5,6 +5,10 @@
 npm i @feverus/react-custom-cursor
 ```
 
+## Демо страница
+[https://react-custom-cursor-demo.vercel.app](https://react-custom-cursor-demo.vercel.app)
+
+
 ## Использование:
 
 ```
